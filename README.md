@@ -1,5 +1,5 @@
 
-WordPress腾讯云COS对象存储插件（WPCOS）
+WordPress阿里云OSS对象存储插件（WPOSS）
 ----------------------------
 
 WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实现静态资源到OSS存储。介绍：https://www.laobuluo.com/2186.html
