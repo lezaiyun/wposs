@@ -23,7 +23,7 @@ WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实�
 
 2、安装插件
 
-将插件WPCOS文件夹解压后上传到"wp-content\plugins"目录，然后再网站后台启动插件。
+将插件WPOSS文件夹解压后上传到"wp-content\plugins"目录，然后再网站后台启动插件。
 
 ![请输入图片描述][1]
 
