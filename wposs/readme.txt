@@ -1,23 +1,48 @@
-WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实现静态资源到OSS存储。介绍：https://www.laobuluo.com/2186.html
+=== WPOSS （WordPress阿里云OSS对象存储插件） ===
+Contributors: laobuluo
+Tags:阿里云oss,oss,对象存储,wordpress oss
+Requires at least: 4.5.0
+Tested up to: 5.1.1
+Stable tag: 0.1
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-第一、WPOSS插件特点
+WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实现静态资源到OSS存储。
 
-1、基于WordPress程序且免费提供给用户使用，将网站的静态文件，比如图片、附件，选择存储在阿里云OSS中或者同时在本地和OSS中，提高网站加载速度。 2、我们可选择使用自定义域名，以及支持HTTPS，前提是我们已经在阿里云OSS中设置完毕。
+== Description ==
 
-3、我们一起发现插件之美。
+<strong>基于WordPress程序，可以选择本地+OSS存储静态资源或者单独使用OSS存储，可以自定义域名或者是使用阿里云自带的Bucket域名。</strong>
 
-第二、WPOSS插件下载
+<strong>主要功能：</strong>
 
-1、插件下载地址
+* 1、基于WordPress程序且免费提供给用户使用，将网站的静态文件，比如图片、附件，选择存储在阿里云OSS中或者同时在本地和OSS中，提高网站加载速度；
+* 2、我们可选择使用自定义域名，以及支持HTTPS，前提是我们已经在阿里云OSS中设置完毕。
 
-WPOSS插件：https://github.com/laobuluo/wposs
+WPOSS官方网站：https://www.laobuluo.com/2186.html
 
-2、安装插件
+== Installation ==
 
-将插件WPCOS文件夹解压后上传到"wp-content\plugins"目录，然后再网站后台启动插件。
+* 1、把wposs文件夹上传到/wp-content/plugins/目录下<br />
+* 2、在后台插件列表中激活wposs<br />
+* 3、在“WPOSS设置”菜单中输入阿里云OSS云存储相关信息和API信息<br />
+* 4、我们可以在编辑文章的时候将静态资源上传到阿里云OSS以及本地备份。
 
-3、插件设置
+== Frequently Asked Questions ==
 
-插件启动之后我们可以在WordPress后台左侧菜单看到"WPOSS设置"，点击设置。
+* 1.当发现插件出错时，开启调试获取错误信息。
+* 2.我们可以选择备份OSS或者本地同时备份。
+* 3.支持HTTPS以及自定义域名。
 
-根据我们申请的信息，以及对应的说明文档注释填写。这样，设置完毕之后，我们可以去编辑文章测试看看，上传图片后检查阿里云OSS中是否有对应图片/附件上传进来。阿里云OSS申请，参考： <a href="https://www.laobuluo.com/2228.html">创建阿里云OSS对象存储及自定义域名 附获取Access Key API密钥</a>
+== Screenshots ==
+
+1. screenshot-1.png
+
+== Changelog ==
+
+= 0.1 =
+* 1、WPOSS正式发布。
+* 2、本插件经过几周的测试，支持最新的WordPress程序，现予以发布。
+
+
+== Upgrade Notice ==
+* 

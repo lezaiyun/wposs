@@ -91,8 +91,9 @@ if (!empty($_POST)) {
                 </th>
                 <td>
                     <input type="text" name="accessKeySecret" value="<?php echo esc_attr($wposs_options['accessKeySecret']); ?>" size="50" placeholder="AccessKeySecret"/>
+                    <p> Access Key API需要我们参考老部落介绍的教程中获取当前账户的API信息，然后填写。</p>
                 </td>
-                <p> Access Key API需要我们参考老部落介绍的教程中获取当前账户的API信息，然后填写。</p>
+                
             </tr>
             <tr>
                 <th>
