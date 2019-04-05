@@ -17,8 +17,8 @@ function wposs_set_options() {
 		'accessKeyId' => "",
 		'accessKeySecret' => "",
 		'no_local_file' => "false",  # 不在本地保留备份
-		'cname' => False,
-    );
+		'cname' => False,  // true为开启CNAME。CNAME是指将自定义域名绑定到存储空间上。可以用来代替ENDPOINT
+	);
 	if(!get_option('wposs_options', False)){
 		add_option('wposs_options', $options, '', 'yes');
 	};
@@ -30,7 +30,7 @@ function wposs_set_options() {
  * @param $file_path : 文件路径
  * @return bool
  */
-function delete_local_file($file_path) {
+function wposs_delete_local_file($file_path) {
 	try {
 		# 文件不存在
 		if (!@file_exists($file_path)) {
@@ -55,12 +55,12 @@ function wposs_delete_remote_attachment($post_id) {
 	$meta = wp_get_attachment_metadata( $post_id );
 
 	if (isset($meta['file'])) {
-		
+		// meta['file']的格式为 "2011/12/press_image.jpg"
 		$wp_uploads = wp_upload_dir();
-		
+		// 示例: [basedir] => C:\path\to\wordpress\wp-content\uploads
 		$file_path = $wp_uploads['basedir'] . '/' . $meta['file'];
 		$oss = new Api(get_option('wposs_options'));
-		
+		// 得到远程路径, get_home_path 示例： "Path: /var/www/htdocs/" or "Path: /var/www/htdocs/wordpress/"
 		$oss->delete_file(str_replace(get_home_path(), '', str_replace("\\", '/', $file_path)));
 
 		if (isset($meta['sizes']) && count($meta['sizes']) > 0) {
@@ -137,12 +137,12 @@ function wposs_upload_thumbs($metadata) {
 
 			# 不保存本地文件则删除
 			if (esc_attr($wposs_options['no_local_file']) == 'true') {
-				delete_local_file($file_path . $val['file']);
+				wposs_delete_local_file($file_path . $val['file']);
 			}
 		}
 		// 删除主文件
 		if (esc_attr($wposs_options['no_local_file']) == 'true') {
-	        delete_local_file($wp_uploads['basedir'] . '/' . $metadata['file']);
+			wposs_delete_local_file($wp_uploads['basedir'] . '/' . $metadata['file']);
 	    }
 	}
 	
@@ -155,5 +155,5 @@ function wposs_add_setting_page() {
 	if (!function_exists('wposs_setting_page')) {
 		require_once 'wposs_setting_page.php';
 	}
-	add_menu_page('WPOSS设置', 'WPOSS设置', 'administrator', __FILE__, 'wposs_setting_page');
+	add_menu_page('WPOSS设置', 'WPOSS设置', 'manage_options', __FILE__, 'wposs_setting_page');
 }

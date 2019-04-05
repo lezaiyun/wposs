@@ -23,7 +23,11 @@ class Api {
 
 	public function __construct($options = array()) {
 		$this->options = $options;
-		
+		// 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。
+		// 强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建RAM账号。
+		// Endpoint以杭州为例，其它Region请按实际情况填写。
+			// 说明 使用自定义域名时，无法使用listBuckets方法。
+
 		try {
 			$this->client = new OssClient($this->options['accessKeyId'], $this->options['accessKeySecret'], $this->options['endpoint'], $this->options['cname']);
 			if (!$this->client->doesBucketExist($this->options['bucket'])) {
@@ -69,6 +73,7 @@ class Api {
 	 */
 	public function upload_file($object, $filePath) {
 		try{
+			// 判读对象是否存在！
 			$exist = $this->client->doesObjectExist($this->options['bucket'], $object);
 			if (!$exist) {
 				$this->client->uploadFile($this->options['bucket'], $object, $filePath);
@@ -86,6 +91,7 @@ class Api {
 	 * @param $object
 	 */
 	public function delete_file($object) {
+		// object不存在时，也返回正常的响应
 		$this->client->deleteObject($this->options['bucket'], $object);
 	}
 }

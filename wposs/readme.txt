@@ -1,9 +1,9 @@
-=== WPOSS （WordPress阿里云OSS对象存储插件） ===
+=== WPOSS ===
 Contributors: laobuluo
 Tags:阿里云oss,oss,对象存储,wordpress oss
 Requires at least: 4.5.0
 Tested up to: 5.1.1
-Stable tag: 0.1
+Stable tag: 0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,9 @@ WPOSS官方网站：https://www.laobuluo.com/2186.html
 * 1、WPOSS正式发布。
 * 2、本插件经过几周的测试，支持最新的WordPress程序，现予以发布。
 
+= 0.2 =
+* 1、根据WP官方发布要求进行修改函数匹配和安全。
+* 2、第一次提交WP官方平台，需要符合要求。
 
 == Upgrade Notice ==
 * 
