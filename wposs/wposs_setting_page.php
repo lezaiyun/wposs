@@ -50,9 +50,8 @@ function wposs_setting_page() {
     <h2>WordPress OSS（WPOSS）阿里云OSS设置</h2>
      <hr/>    
         <p>WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实现静态资源到OSS存储中。提高网站项目的访问速度，以及静态资源的安全存储功能。</p>
-        <p>插件网站： <a href="https://www.laobuluo.com" target="_blank">老部落</a> / <a href="https://www.laobuluo.com/2186.html" target="_blank">WPOSS插件发布页面和安装设置教程</a> / 站长交流QQ群： <a href="https://jq.qq.com/?_wv=1027&k=5gBE7Pt" target="_blank"> <font color="red">594467847</font></a>（宗旨：多做事，少说话，效率至上）</p>
-        <p>商家促销： <a href="https://www.laobuluo.com/aliyun/" target="_blank">最新阿里云优惠汇总</a></p>
-          
+        <p>插件网站： <a href="https://www.laobuluo.com" target="_blank">老部落</a> / <a href="https://www.laobuluo.com/2250.html" target="_blank">WPOSS插件发布页面和安装设置教程</a> / 站长交流QQ群： <a href="https://jq.qq.com/?_wv=1027&k=5gBE7Pt" target="_blank"> <font color="red">594467847</font></a>（网站运营及互联网创业交流）/ <a href="https://www.laobuluo.com/aliyun/" target="_blank">最新阿里云优惠汇总</a></p>
+                 
       <hr/>
     <form name="form1" method="post" action="<?php echo wp_nonce_url('./admin.php?page=' . WPOSS_BASEFOLDER . '/wposs_actions.php'); ?>">
         <table class="form-table">
@@ -74,11 +73,10 @@ function wposs_setting_page() {
                 </th>
                 <td>
                     <input type="text" name="endpoint" value="<?php echo esc_attr($wposs_options['endpoint']); ?>" size="50"
-                           placeholder="http://oss-cn-shanghai.aliyuncs.com"/>
-                    <p>请打开 <code>https://help.aliyun.com/document_detail/31837.html</code> 查看OSS所属地域对应的EndPoint。 </p>
-                    <p>若您的wordpress部署在非阿里云服务器请选择 <a href="https://help.aliyun.com/document_detail/31837.html#h2-url-1">外网EndPoint</a> (对应表格第3列); </p>
-                    <p>若部署在阿里云不同VPC下使用 <a href="https://help.aliyun.com/document_detail/31837.html#h2-url-1">内网EndPoint</a> (对应表格第5列); </p>
-                    <p>若部署在同一VPC可使用 <a href="https://help.aliyun.com/document_detail/31837.html#h2-url-2">VPC EndPoint</a> (对应表格第3列)。</p>
+                           placeholder="oss-cn-shanghai.aliyuncs.com"/>
+                    <p>1. 我们在创建Bucket之后，在[概况]中，可以看到 EndPoint 地域节点</p>
+                    <p>2. 如果我们的WordPress部署在非阿里云服务器，则输入[外网访问]对应的EndPoint节点</p>
+                    <p>3. 如果使用的是[ECS 的经典网络访问]或者[ECS 的 VPC 网络访问]则对应的EndPoint节点</p>
                 </td>
             </tr>
             <tr>

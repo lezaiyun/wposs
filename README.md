@@ -2,24 +2,34 @@
 WordPress阿里云OSS对象存储插件（WPOSS）
 ----------------------------
 
-WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实现静态资源到OSS存储。介绍：https://www.laobuluo.com/2186.html
+WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实现静态资源到OSS存储。介绍：https://www.laobuluo.com/2250.html
 
 基于WordPress程序，可以选择本地+OSS存储静态资源或者单独使用OSS存储，可以自定义域名或者是使用阿里云自带的Bucket域名。如果我们觉得喜欢，可以一起看看吧。
 
 --------------------
 
-**第一、WPOSS插件特点**
+**第一、官方网站和更新**
+
+1、发布者老蒋：https://www.itbulu.com/
+2、站长交流QQ群： 594467847（网站运营及互联网创业交流）
+3、最新阿里云优惠汇总：https://www.laobuluo.com/aliyun/
+
+**第二、WPOSS插件特点**
 
 1、基于WordPress程序且免费提供给用户使用，将网站的静态文件，比如图片、附件，选择存储在阿里云OSS中或者同时在本地和OSS中，提高网站加载速度。
 2、我们可选择使用自定义域名，以及支持HTTPS，前提是我们已经在阿里云OSS中设置完毕。
 
 3、我们一起发现插件之美。
 
-**第二、WPOSS插件下载**
+4、插件更多详细介绍和安装：https://www.laobuluo.com/2250.html
+
+**第三、WPOSS插件下载**
 
 1、插件下载地址
 
-    WPOSS插件：https://github.com/laobuluo/wposs
+    1、WPOSS插件：https://github.com/laobuluo/wposs
+
+    2、WP平台下载：https://wordpress.org/plugins/wposs
 
 2、安装插件
 
@@ -39,8 +49,9 @@ WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实�
 **WPOSS插件更新**
 
 2019.3.22 - WPOSS 0.1版本测试发布，基础功能调试没有问题。
+2019.4.5 - WPOSS 0.2版本优化细节和符合WP官方要求发布至平台。
 
 
   [1]: https://raw.githubusercontent.com/laobuluo/wposs/master/wpoos-1-1.jpg
   [2]: https://raw.githubusercontent.com/laobuluo/wposs/master/wpoos-1-2.jpg
-  [3]: https://www.laobuluo.com/2228.html
+  [3]: https://www.laobuluo.com/2250.html
