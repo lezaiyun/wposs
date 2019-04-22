@@ -44,8 +44,6 @@ function wposs_restore_options() {
 	$wposs_options = get_option('wposs_options');
 	update_option('upload_path', $wposs_options['upload_information']['original']['upload_path']);
 	update_option('upload_url_path', $wposs_options['upload_information']['original']['upload_url_path']);
-	$wposs_options['upload_information']['original']['upload_path'] = '';
-	$wposs_options['upload_information']['original']['upload_url_path'] = '';
 }
 
 
