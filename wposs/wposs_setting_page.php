@@ -32,7 +32,7 @@ function wposs_setting_page() {
 
             # 替换 upload_url_path 的值
             update_option('upload_url_path', esc_url_raw(trim(trim(stripslashes($_POST['upload_url_path']))), '/'));
-	        $wposs_options['upload_information']['active']['upload_path'] = esc_url_raw(trim(trim(stripslashes($_POST['upload_url_path']))), '/');
+	        $wposs_options['upload_information']['active']['upload_url_path'] = esc_url_raw(trim(trim(stripslashes($_POST['upload_url_path']))), '/');
 
 	        // 不管结果变没变，有提交则直接以提交的数据 更新 wposs_options
 	        update_option('wposs_options', $wposs_options);
