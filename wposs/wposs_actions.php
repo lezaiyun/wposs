@@ -3,7 +3,7 @@ require_once 'wposs_api.php';
 
 use WPOSS\Api;
 
-define( 'WPOSS_VERSION', '0.1' );
+define( 'WPOSS_VERSION', '0.2' );
 define( 'WPOSS_MINIMUM_WP_VERSION', '4.0' );  // 最早WP版本
 define( 'WPOSS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );  // 插件路径
 define('WPOSS_BASENAME', plugin_basename(__FILE__));
@@ -18,10 +18,34 @@ function wposs_set_options() {
 		'accessKeySecret' => "",
 		'no_local_file' => "false",  # 不在本地保留备份
 		'cname' => False,  // true为开启CNAME。CNAME是指将自定义域名绑定到存储空间上。可以用来代替ENDPOINT
+		'upload_information' => array(
+			'original' => array(
+				'upload_path' => '',
+				'upload_url_path' => '',
+			),
+			'active' => array(
+				'upload_path' => '',
+				'upload_url_path' => '',
+			),
+		),
 	);
-	if(!get_option('wposs_options', False)){
+	$wposs_options = get_option('wposs_options', False);
+	if(!$wposs_options){
+		$options['upload_information']['original']['upload_path'] = get_option('upload_path');
+		$options['upload_information']['original']['upload_url_path'] = get_option('upload_url_path');
 		add_option('wposs_options', $options, '', 'yes');
+	}else{
+		update_option('upload_path', $wposs_options['upload_information']['active']['upload_path']);
+		update_option('upload_url_path', $wposs_options['upload_information']['active']['upload_url_path']);
 	};
+}
+
+function wposs_restore_options() {
+	$wposs_options = get_option('wposs_options');
+	update_option('upload_path', $wposs_options['upload_information']['original']['upload_path']);
+	update_option('upload_url_path', $wposs_options['upload_information']['original']['upload_url_path']);
+	$wposs_options['upload_information']['original']['upload_path'] = '';
+	$wposs_options['upload_information']['original']['upload_url_path'] = '';
 }
 
 

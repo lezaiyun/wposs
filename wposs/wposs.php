@@ -13,6 +13,7 @@ require_once 'wposs_actions.php';
 
 # 插件 activation 函数当一个插件在 WordPress 中”activated(启用)”时被触发。
 register_activation_hook(__FILE__, 'wposs_set_options');
+register_deactivation_hook(__FILE__, 'wposs_restore_options');
 
 # 避免上传插件/主题被同步到对象存储
 if (substr_count($_SERVER['REQUEST_URI'], '/update.php') <= 0) {

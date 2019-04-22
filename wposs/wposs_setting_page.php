@@ -17,24 +17,25 @@ function wposs_setting_page() {
         if($_POST['type'] == 'info_set') {
 
             foreach ($wposs_options as $k => $v) {
-                if ($k =='no_local_file') {
+                if ($k =='no_local_file' && $k != 'upload_information') {
                     $wposs_options[$k] = (isset($_POST[$k])) ? 'true' : 'false';
                 } else {
                     $wposs_options[$k] = (isset($_POST[$k])) ? sanitize_text_field(trim(stripslashes($_POST[$k]))) : '';
                 }
             }
 
-            // 不管结果变没变，有提交则直接以提交的数据 更新 wposs_options
-            update_option('wposs_options', $wposs_options);
-
             # 更新另外两个wp自带的上传相关属性的值
             # 替换 upload_path 的值
             $upload_path = sanitize_option('upload_path', trim(trim(stripslashes($_POST['upload_path'])), '/'));
             update_option('upload_path', ($upload_path == '') ? ('wp-content/uploads') : ($upload_path));
+	        $wposs_options['upload_information']['active']['upload_path'] = ($upload_path == '') ? 'wp-content/uploads' : $upload_path;
 
             # 替换 upload_url_path 的值
             update_option('upload_url_path', esc_url_raw(trim(trim(stripslashes($_POST['upload_url_path']))), '/'));
+	        $wposs_options['upload_information']['active']['upload_path'] = esc_url_raw(trim(trim(stripslashes($_POST['upload_url_path']))), '/');
 
+	        // 不管结果变没变，有提交则直接以提交的数据 更新 wposs_options
+	        update_option('wposs_options', $wposs_options);
 ?>
     <div class="updated"><p><strong>设置已保存！</strong></p></div>
 
