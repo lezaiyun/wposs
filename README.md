@@ -50,6 +50,7 @@ WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实�
 
 2019.3.22 - WPOSS 0.1版本测试发布，基础功能调试没有问题。
 2019.4.5 - WPOSS 0.2版本优化细节和符合WP官方要求发布至平台。
+2019.4.23 - WPOSS 0.3版本修复"停用"和"插件"后恢复原WP的目录文件夹
 
 
   [1]: https://raw.githubusercontent.com/laobuluo/wposs/master/wpoos-1-1.jpg
