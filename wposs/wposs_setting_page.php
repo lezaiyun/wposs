@@ -130,13 +130,9 @@ function wposs_setting_page() {
                            placeholder="请输入Bucket 域名"/>
 
                   <p><b>设置注意事项：</b></p>
-
-                    <p>1）URL前缀的格式为 <code>{http或https}://{bucket}.{外网EndPoint}</code> （“本地文件夹”为 <code>.</code> 时），或者 <code>http://{cos域名}/{本地文件夹}</code>
-                        ，“本地文件夹”务必与上面保持一致（结尾无 <code>/</code> ）。</p>
-
-                    <p>2）OSS中的存放路径（即“文件夹”）与上述 <code>本地文件夹</code> 中定义的路径是相同的（出于方便切换考虑）。</p>
-
-                    <p>3）如果需要使用 <code>独立域名</code> ，直接将 <code>{bucket}.{外网EndPoint}</code> 替换为 <code>您的独立域名</code> ，并在OSS控制台域名管理里面<code>绑定该域名</code>。</p>
+                    <p>1. URL前缀的格式为 <code>{http或https}://{bucket} 域名地址</code>/<code>本地文件夹</code></p>
+                    <p>2. 示范A： <code>https://laobuluo.oss-cn-shanghai.aliyuncs.com/wp-content/uploads</code></p>
+                    <p>3. 示范B： <code>http://oss.laobuluo.com/wp-content/uploads</code></p>
                 </td>
             </tr>
             <tr>
