@@ -34,16 +34,35 @@ function wposs_set_options() {
 		$options['upload_information']['original']['upload_path'] = get_option('upload_path');
 		$options['upload_information']['original']['upload_url_path'] = get_option('upload_url_path');
 		add_option('wposs_options', $options, '', 'yes');
-	}else{
-		update_option('upload_path', $wposs_options['upload_information']['active']['upload_path']);
-		update_option('upload_url_path', $wposs_options['upload_information']['active']['upload_url_path']);
-	};
+	}else {
+		$wposs_options = wposs_check_options($wposs_options);
+		update_option( 'upload_path', $wposs_options['upload_information']['active']['upload_path'] );
+		update_option( 'upload_url_path', $wposs_options['upload_information']['active']['upload_url_path'] );
+	}
 }
 
 function wposs_restore_options() {
-	$wposs_options = get_option('wposs_options');
+	$wposs_options = wposs_check_options(get_option('wposs_options'));
 	update_option('upload_path', $wposs_options['upload_information']['original']['upload_path']);
 	update_option('upload_url_path', $wposs_options['upload_information']['original']['upload_url_path']);
+}
+
+
+function wposs_check_options($wposs_options){
+	if (!array_key_exists('upload_information', $wposs_options) or !is_array($wposs_options['upload_information'])) {
+		$wposs_options['upload_information'] = array(
+			'original' => array(
+				'upload_path' => '',
+				'upload_url_path' => '',
+			),
+			'active' => array(
+				'upload_path' => get_option('upload_path'),
+				'upload_url_path' => get_option('upload_url_path'),
+			),
+		);
+		update_option('wposs_options', $wposs_options);
+	}
+	return $wposs_options;
 }
 
 
