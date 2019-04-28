@@ -3,7 +3,7 @@ require_once 'wposs_api.php';
 
 use WPOSS\Api;
 
-define( 'WPOSS_VERSION', '0.2' );
+define( 'WPOSS_VERSION', '0.3' );
 define( 'WPOSS_MINIMUM_WP_VERSION', '4.0' );  // 最早WP版本
 define( 'WPOSS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );  // 插件路径
 define('WPOSS_BASENAME', plugin_basename(__FILE__));
@@ -97,17 +97,19 @@ function wposs_delete_remote_attachment($post_id) {
 
 	if (isset($meta['file'])) {
 		// meta['file']的格式为 "2011/12/press_image.jpg"
-		$wp_uploads = wp_upload_dir();
-		// 示例: [basedir] => C:\path\to\wordpress\wp-content\uploads
-		$file_path = $wp_uploads['basedir'] . '/' . $meta['file'];
+		$upload_path = get_option('upload_path');
+		if ($upload_path == '') {
+			$upload_path = 'wp-content/uploads';
+		}
+		$file_path = $upload_path . '/' . $meta['file'];
 		$oss = new Api(get_option('wposs_options'));
 		// 得到远程路径, get_home_path 示例： "Path: /var/www/htdocs/" or "Path: /var/www/htdocs/wordpress/"
-		$oss->delete_file(str_replace(get_home_path(), '', str_replace("\\", '/', $file_path)));
+		$oss->delete_file(str_replace("\\", '/', $file_path));
 
 		if (isset($meta['sizes']) && count($meta['sizes']) > 0) {
 			foreach ($meta['sizes'] as $val) {
 				$size_file = dirname($file_path) . '/' . $val['file'];
-				$oss->delete_file(str_replace(get_home_path(), '', str_replace("\\", '/', $size_file)));
+				$oss->delete_file(str_replace("\\", '/', $size_file));
 			}
 		}
 	}
@@ -120,17 +122,15 @@ function wposs_delete_remote_attachment($post_id) {
  * @return array()
  */
 function wposs_upload_attachments($metadata) {
-	# 生成object在OSS中的存储路径
-	if (get_option('upload_path') == '.') {
-		//如果含有“./”则去除之
-		$metadata['file'] = str_replace("./", '', $metadata['file']);
+	$upload_path = get_option('upload_path');
+	if ($upload_path == '') {
+		$upload_path = 'wp-content/uploads';
 	}
-	# 必须先替换\\, 因为get_home_path的输出格式为 "Path: /var/www/htdocs/" or "Path: /var/www/htdocs/wordpress/"
-	$key = str_replace(get_home_path(), '', str_replace("\\", '/', $metadata['file']));;
+	# 生成object在OSS中的存储路径
+	$key = str_replace("./", '', str_replace(wp_upload_dir()['basedir'], $upload_path, $metadata['file']));
 
 	# 在本地的存储路径
-	$file = get_home_path() . $key;  //早期版本 $metadata['file'] 为相对路径
-
+	$file = $metadata['file'];
 	# 调用上传函数
 	$oss = new Api(get_option('wposs_options'));
 	$oss->upload_file($key, $file);
@@ -160,16 +160,16 @@ function wposs_upload_thumbs($metadata) {
 		$wp_uploads = wp_upload_dir();
 		//得到本地文件夹和远端文件夹
 		$file_path = $wp_uploads['basedir'] . '/' . dirname($metadata['file']) . '/';
-		if (get_option('upload_path') == '.') {
-			$file_path = str_replace(get_home_path() . "./", '', str_replace("\\", '/', $file_path));
-		} else {
-			$file_path = str_replace("\\", '/', $file_path);
+
+		$upload_path = get_option('upload_path');
+		if ($upload_path == '') {
+			$upload_path = 'wp-content/uploads';
 		}
 
 		// 文件名可能相同，上传操作时会判断是否存在，如果存在则不会执行上传。
 		foreach ($metadata['sizes'] as $val) {
 			//生成object在COS中的存储路径
-			$key = str_replace(get_home_path(), '', $file_path) . $val['file'];
+			$key = str_replace($wp_uploads['basedir'], $upload_path, $file_path) . $val['file'];
 			//生成本地存储路径
 			$file = $file_path . $val['file'];
 
@@ -184,9 +184,9 @@ function wposs_upload_thumbs($metadata) {
 		// 删除主文件
 		if (esc_attr($wposs_options['no_local_file']) == 'true') {
 			wposs_delete_local_file($wp_uploads['basedir'] . '/' . $metadata['file']);
-	    }
+		}
 	}
-	
+
 	return $metadata;
 }
 
