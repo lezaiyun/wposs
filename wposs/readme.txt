@@ -3,7 +3,7 @@ Contributors: laobuluo
 Donate link: https://www.laobuluo.com/donate/
 Tags:阿里云oss,oss,对象存储,wordpress oss
 Requires at least: 4.5.0
-Tested up to: 5.1.1
+Tested up to: 5.2
 Stable tag: 0.3
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -55,6 +55,7 @@ WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实�
 
 = 0.3 =
 * 1、修复"停用"和"插件"后恢复原WP的目录文件夹
+* 2、解决用户安装与主题冲突空白问题
 
 == Upgrade Notice ==
 * 

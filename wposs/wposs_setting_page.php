@@ -113,27 +113,29 @@ function wposs_setting_page() {
             <tr>
                 <th>
                     <legend>本地文件夹</legend>
+                    <p><b><font color="red">注意这个目录下面需要用【看清楚，看清楚】</font></b></p>
                 </th>
                 <td>
                     <input type="text" name="upload_path" value="<?php echo esc_attr(get_option('upload_path')); ?>" size="50"
-                           placeholder="请输入上传文件夹"/>
+                           placeholder="本文文件夹 默认是 wp-content/uploads"/>
 
                     <p>1. 附件在服务器上相对于WordPress根目录的存储位置，例如： <code>wp-content/uploads</code> （注意不要以“/”开头和结尾），根目录请输入<code>.</code>。</p>
-                    <p>2. 示范：<code>wp-content/uploads</code></p>
+                    <p>2. <b><font color="red">建议默认：</font></b> <code>wp-content/uploads</code></p>
                 </td>
             </tr>
             <tr>
                 <th>
-                    <legend>Bucket 域名</legend>
+                    <legend>Bucket域名+文件路径尾巴</legend>
+                    <p><b><font color="red">注意不要忘记最后加上本地文件夹路径 【看范例，看范例】</font></b></p>
                 </th>
                 <td>
                     <input type="text" name="upload_url_path" value="<?php echo esc_url(get_option('upload_url_path')); ?>" size="50"
-                           placeholder="请输入Bucket 域名"/>
+                           placeholder="请输入Bucket 域名+本地文件夹"/>
 
                   <p><b>设置注意事项：</b></p>
-                    <p>1. URL前缀的格式为 <code>{http或https}://{bucket} 域名地址</code>/<code>本地文件夹</code></p>
-                    <p>2. 示范A： <code>https://laobuluo.oss-cn-shanghai.aliyuncs.com/wp-content/uploads</code></p>
-                    <p>3. 示范B： <code>http://oss.laobuluo.com/wp-content/uploads</code></p>
+                    <p>1. URL前缀的格式为 <code>{http或https}://{bucket} 域名地址</code>/<code><font color="red">本地文件夹</font></code></p>
+                    <p>2. 示范A： <code>https://laobuluo.oss-cn-shanghai.aliyuncs.com/<font color="red">wp-content/uploads</font></code></p>
+                    <p>3. 示范B： <code>http://oss.laobuluo.com/<font color="red">wp-content/uploads</font></code></p>
                 </td>
             </tr>
             <tr>
