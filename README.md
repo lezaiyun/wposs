@@ -11,7 +11,7 @@ WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实�
 **第一、官方网站和更新**
 
 1、发布者老蒋：https://www.itbulu.com/
-2、站长交流QQ群： 594467847（网站运营及互联网创业交流）
+2、站长交流QQ群： 1012423279（网站运营及互联网创业交流）
 3、最新阿里云优惠汇总：https://www.laobuluo.com/aliyun/
 
 **第二、WPOSS插件特点**
@@ -27,9 +27,7 @@ WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实�
 
 1、插件下载地址
 
-    1、WPOSS插件：https://github.com/laobuluo/wposs
-
-    2、WP平台下载：https://wordpress.org/plugins/wposs
+WP平台下载：https://wordpress.org/plugins/wposs
 
 2、安装插件
 
@@ -48,9 +46,23 @@ WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实�
 
 **WPOSS插件更新**
 
-2019.3.22 - WPOSS 0.1版本测试发布，基础功能调试没有问题。
-2019.4.5 - WPOSS 0.2版本优化细节和符合WP官方要求发布至平台。
-2019.4.23 - WPOSS 0.3版本修复"停用"和"插件"后恢复原WP的目录文件夹
+= 0.1 =
+* 1、WPOSS正式发布。
+* 2、本插件经过几周的测试，支持最新的WordPress程序，现予以发布。
+
+= 0.2 =
+* 1、根据WP官方发布要求进行修改函数匹配和安全。
+* 2、第一次提交WP官方平台，需要修改适配WP官方插件要求。
+
+= 0.3 =
+* 1、修复"停用"和"插件"后恢复原WP的目录文件夹
+* 2、解决用户安装与主题冲突空白问题
+
+= 1.0.1 =
+* 1、通过1年测试WPCOS比较稳定正式版本发布
+* 2、重构CSS样式极简风格
+* 3、兼容WordPress5.4版本
+* 4、计划重构核心代码提高上传速度
 
 
   [1]: https://raw.githubusercontent.com/laobuluo/wposs/master/wpoos-1-1.jpg

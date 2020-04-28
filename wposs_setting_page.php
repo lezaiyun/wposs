@@ -38,7 +38,7 @@ function wposs_setting_page() {
 	        // 不管结果变没变，有提交则直接以提交的数据 更新 wposs_options
 	        update_option('wposs_options', $wposs_options);
 ?>
-    <div class="updated"><p><strong>设置已保存！</strong></p></div>
+   <div class="notice notice-success settings-error is-dismissible"><p><strong>设置已保存。</strong></p></div>
 
 <?php
 
@@ -48,19 +48,20 @@ function wposs_setting_page() {
 ?>
 
 
-<div class="wrap" style="margin: 10px;">
-    <h2>WordPress OSS（WPOSS）阿里云OSS设置</h2>
-     <hr/>    
+<div class="wrap">
+    <h1 class="wp-heading-inline">WordPress OSS（WPOSS）阿里云OSS设置</h1> <a href="https://www.laobuluo.com/2250.html" target="_blank"class="page-title-action">插件介绍</a>
+        <hr class="wp-header-end">        
         <p>WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实现静态资源到OSS存储中。提高网站项目的访问速度，以及静态资源的安全存储功能。</p>
-        <p>插件网站： <a href="https://www.laobuluo.com" target="_blank">老部落</a> / <a href="https://www.laobuluo.com/2250.html" target="_blank">WPOSS插件发布页面和安装设置教程</a> / 站长交流QQ群： <a href="https://jq.qq.com/?_wv=1027&k=5gBE7Pt" target="_blank"> <font color="red">594467847</font></a>（网站运营及互联网创业交流）/ <a href="https://www.laobuluo.com/aliyun/" target="_blank">最新阿里云优惠汇总</a></p>
+        <p>快速导航：<a href="https://www.laobuluo.com/aliyun/" target="_blank">最新阿里云优惠汇总</a> / 站长QQ群： <a href="https://jq.qq.com/?_wv=1027&k=5IpUNWK" target="_blank"> <font color="red">1012423279</font></a>（交流建站和运营） / 公众号：QQ69377078（插件反馈）</p>
                  
       <hr/>
     <form name="form1" method="post" action="<?php echo wp_nonce_url('./admin.php?page=' . WPOSS_BASEFOLDER . '/wposs_actions.php'); ?>">
         <table class="form-table">
             <tr>
-                <th>
-                    <legend>Bucket 名称</legend>
-                </th>
+                <th scope="row">
+                       Bucket 名称
+                    </th>
+               
                 <td>
                     <input type="text" name="bucket" value="<?php echo esc_attr($wposs_options['bucket']); ?>" size="50"
                            placeholder="BUCKET"/>
@@ -70,9 +71,10 @@ function wposs_setting_page() {
                 </td>
             </tr>
             <tr>
-                <th>
-                    <legend>EndPoint 地域节点</legend>
-                </th>
+                <th scope="row">
+                      EndPoint 地域节点
+                    </th>
+                
                 <td>
                     <input type="text" name="endpoint" value="<?php echo esc_attr($wposs_options['endpoint']); ?>" size="50"
                            placeholder="oss-cn-shanghai.aliyuncs.com"/>
@@ -82,24 +84,28 @@ function wposs_setting_page() {
                 </td>
             </tr>
             <tr>
-                <th>
-                    <legend>Access Key Id</legend>
-                </th>
+                 <th scope="row">
+                      Access Key Id
+                    </th>
+                
                 <td><input type="text" name="accessKeyId" value="<?php echo esc_attr($wposs_options['accessKeyId']); ?>" size="50" placeholder="AccessKeyId"/></td>
             </tr>
             <tr>
-                <th>
-                    <legend>Access Key Secret</legend>
-                </th>
+                <th scope="row">
+                  Access Key Secret
+                    </th>
+               
                 <td>
                     <input type="text" name="accessKeySecret" value="<?php echo esc_attr($wposs_options['accessKeySecret']); ?>" size="50" placeholder="AccessKeySecret"/>
                     <p> Access Key API需要我们参考老部落介绍的教程中获取当前账户的API信息( <a href="https://www.laobuluo.com/2228.html" target="_blank">参考文章地址</a>)，然后填写。</p>
                 </td>
             </tr>
             <tr>
-                <th>
-                    <legend>不在本地保留备份</legend>
-                </th>
+                <th scope="row">
+                  不在本地保留备份
+                    </th>
+               
+               
                 <td>
                     <input type="checkbox"
                            name="no_local_file" <?php if (esc_attr($wposs_options['no_local_file']) == 'true') {
@@ -111,12 +117,12 @@ function wposs_setting_page() {
                 </td>
             </tr>
             <tr>
-                <th>
-                    <legend>本地文件夹</legend>
-                    <p><b><font color="red">注意这个目录下面需要用【看清楚，看清楚】</font></b></p>
-                </th>
+                 <th scope="row">
+                  本地文件夹
+                    </th>
+                
                 <td>
-                    <input type="text" name="upload_path" value="<?php echo esc_attr(get_option('upload_path')); ?>" size="50"
+                    <input type="text" name="upload_path" value="<?php echo esc_attr(get_option('upload_path')); ?>" size="30"
                            placeholder="本文文件夹 默认是 wp-content/uploads"/>
 
                     <p>1. 附件在服务器上相对于WordPress根目录的存储位置，例如： <code>wp-content/uploads</code> （注意不要以“/”开头和结尾），根目录请输入<code>.</code>。</p>
@@ -124,12 +130,12 @@ function wposs_setting_page() {
                 </td>
             </tr>
             <tr>
-                <th>
-                    <legend>Bucket域名+文件路径尾巴</legend>
-                    <p><b><font color="red">注意不要忘记最后加上本地文件夹路径 【看范例，看范例】</font></b></p>
-                </th>
+                <th scope="row">
+                Bucket域名+本地文件夹路径
+                    </th>
+                
                 <td>
-                    <input type="text" name="upload_url_path" value="<?php echo esc_url(get_option('upload_url_path')); ?>" size="50"
+                    <input type="text" name="upload_url_path" value="<?php echo esc_url(get_option('upload_url_path')); ?>" size="60"
                            placeholder="请输入Bucket 域名+本地文件夹"/>
 
                   <p><b>设置注意事项：</b></p>
@@ -142,11 +148,16 @@ function wposs_setting_page() {
                 <th>
                    
                 </th>
-                <td><input type="submit" name="submit" value="保存WPOSS设置"/></td>
+                <td><input type="submit" name="submit" value="保存设置" class="button button-primary"/></td>
             </tr>
         </table>
         <input type="hidden" name="type" value="info_set">
     </form>
+     <hr>
+        <div style='text-align:center;line-height: 50px;'>
+            <a href="https://www.laobuluo.com/" target="_blank">插件主页</a> | <a href="https://www.laobuluo.com/2250.html" target="_blank">插件发布页面</a> | <a href="https://jq.qq.com/?_wv=1027&k=5IpUNWK" target="_blank">QQ群：1012423279</a> | 公众号：QQ69377078（插件反馈）
+
+        </div>
 </div>
 <?php
 }

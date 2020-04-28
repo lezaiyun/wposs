@@ -1,10 +1,10 @@
-=== WPOSS ===
+=== WPOSS阿里云对象存储 ===
 Contributors: laobuluo
 Donate link: https://www.laobuluo.com/donate/
 Tags:阿里云oss,oss,对象存储,wordpress oss
 Requires at least: 4.5.0
-Tested up to: 5.2
-Stable tag: 0.3
+Tested up to: 5.4
+Stable tag: 1.0.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -20,6 +20,7 @@ WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实�
 * 1、基于WordPress程序且免费提供给用户使用，将网站的静态文件，比如图片、附件，选择存储在阿里云OSS中或者同时在本地和OSS中，提高网站加载速度；
 * 2、我们可选择使用自定义域名，以及支持HTTPS，前提是我们已经在阿里云OSS中设置完毕。
 * 3、插件更多详细介绍和安装：https://www.laobuluo.com/2250.html
+* 4、QQ交流群：1012423279
 
 
 <strong>支持网站/博主：</strong>
@@ -56,6 +57,12 @@ WordPress OSS（简称:WPOSS），基于阿里云OSS对象存储与WordPress实�
 = 0.3 =
 * 1、修复"停用"和"插件"后恢复原WP的目录文件夹
 * 2、解决用户安装与主题冲突空白问题
+
+= 1.0.1 =
+* 1、通过1年测试WPCOS比较稳定正式版本发布
+* 2、重构CSS样式极简风格
+* 3、兼容WordPress5.4版本
+* 4、计划重构核心代码提高上传速度
 
 == Upgrade Notice ==
 * 

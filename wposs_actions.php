@@ -3,7 +3,7 @@ require_once 'wposs_api.php';
 
 use WPOSS\Api;
 
-define( 'WPOSS_VERSION', '0.3' );
+define( 'WPOSS_VERSION', '1.0.1' );
 define( 'WPOSS_MINIMUM_WP_VERSION', '4.0' );  // 最早WP版本
 define( 'WPOSS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );  // 插件路径
 define('WPOSS_BASENAME', plugin_basename(__FILE__));
@@ -196,5 +196,5 @@ function wposs_add_setting_page() {
 	if (!function_exists('wposs_setting_page')) {
 		require_once 'wposs_setting_page.php';
 	}
-	add_menu_page('WPOSS设置', 'WPOSS设置', 'manage_options', __FILE__, 'wposs_setting_page');
+	Add_options_page('WPOSS设置', 'WPOSS设置', 'manage_options', __FILE__, 'wposs_setting_page');
 }
