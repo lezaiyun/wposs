@@ -3,7 +3,7 @@
 Plugin Name: WPOSS(阿里云对象存储)
 Plugin URI: https://www.laobuluo.com/2250.html
 Description: WordPress同步附件内容远程至阿里云OSS对象存储中，实现网站数据与静态资源分离，提高网站加载速度。站长互助QQ群： <a href="https://jq.qq.com/?_wv=1027&k=5IpUNWK" target="_blank"> <font color="red">1012423279</font></a>
-Version: 1.0.1
+Version: 1.0.2
 Author: 老部落（老赵）
 Author URI: https://www.laobuluo.com
 */
